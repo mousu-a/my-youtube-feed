@@ -16,6 +16,8 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
+# Slim template engine integration for Rails [https://github.com/slim-template/slim-rails]
+gem 'slim-rails', '~> 4.0'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -64,6 +66,9 @@ group :development, :test do
 end
 
 group :development do
+  # Convert existing ERB templates to Slim.
+  gem 'html2slim', git: 'https://github.com/slim-template/html2slim.git', require: false
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 end
