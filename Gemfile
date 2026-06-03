@@ -46,6 +46,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
 
+  gem 'factory_bot_rails', '~> 6.5'
+  gem 'rspec-rails', '~> 8.0'
+
   # Static analysis for Ruby, RSpec, Capybara, and Rails code.
   gem 'rubocop', '~> 1.86', require: false
   gem 'rubocop-capybara', '~> 2.23', require: false
@@ -63,6 +66,10 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
+end
+
+group :test do
+  gem 'capybara', '~> 3.40'
 end
 
 group :development do
