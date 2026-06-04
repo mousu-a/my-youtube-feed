@@ -10,6 +10,9 @@
 # Ignore npm dependencies.
 /node_modules/
 
+# Ignore local RSpec run state.
+/spec/examples.txt
+
 # Ignore all environment files.
 /.env*
 
