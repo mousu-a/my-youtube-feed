@@ -1,0 +1,11 @@
+h1 My Youtube Feed
+
+- if current_user
+  = image_tag current_user.avatar_url, alt: 'ユーザーアイコン', size: '48x48'
+  = link_to 'ログアウト', logout_path, data: { turbo_method: :delete }
+- else
+  p
+    = link_to '利用規約', 'https://example.com'
+    | に同意して
+    = button_to 'Googleアカウントでログイン', '/auth/google_oauth2',
+        method: :post, data: { turbo: false }
