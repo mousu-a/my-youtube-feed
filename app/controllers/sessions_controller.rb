@@ -13,22 +13,19 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    clear_session
+    reset_session
     redirect_to root_path, notice: t('.logout_success'), status: :see_other
   end
 
   def auth_failure
-    clear_session
+    reset_session
     redirect_to root_path, alert: t('.auth_failure'), status: :see_other
   end
 
   private
 
   def login(user)
+    reset_session
     session[:user_id] = user.id
-  end
-
-  def clear_session
-    session.delete(:user_id)
   end
 end
