@@ -41,6 +41,19 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18@sha256:8ff36f3c66371cba71d20ceedccfc3de9669a68737607888c4ef0af93abe8e39
+        ports:
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+        env:
+          POSTGRES_DB: my_youtube_feed_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://rails:password@localhost:5432/my_youtube_feed_test
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -49,8 +62,19 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-      - name: Run RSpec
+      - name: Setup database
+        run: bin/rails db:prepare
+      - name: Assets precompile
+        run: bin/rails assets:precompile
+      - name: Run tests
         run: bundle exec rspec
+      - name: Keep screenshots from failed system tests
+        uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: screenshots
+          path: ${{ github.workspace }}/tmp/screenshots
+          if-no-files-found: ignore
 
   lint:
     runs-on: ubuntu-latest
