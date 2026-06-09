@@ -1,0 +1,11 @@
+ja:
+  users:
+    guest: ゲスト
+  sessions:
+    create:
+      login_success: ログインしました。
+      login_failure: 認証に失敗しました。もう一度お試しください。
+    destroy:
+      logout_success: ログアウトしました。
+    auth_failure:
+      auth_failure: Googleログインがキャンセルされました。

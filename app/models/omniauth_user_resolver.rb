@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+class OmniAuthUserResolver
+  DEFAULT_AVATAR_URL = 'https://www.gravatar.com/avatar/?d=mp'
+
+  def self.find_or_create_user(auth)
+    new(auth).find_or_create_user
+  end
+
+  def initialize(auth)
+    @auth = auth
+  end
+
+  def find_or_create_user
+    User.find_or_create_by(provider: @auth.provider, uid: @auth.uid) do |user|
+      user.assign_attributes(profile_attributes)
+    end
+  end
+
+  private
+
+  def profile_attributes
+    {
+      name: @auth.info.name.presence || I18n.t('users.guest'),
+      email: @auth.info.email,
+      avatar_url: @auth.info.image.presence || DEFAULT_AVATAR_URL
+    }
+  end
+end
