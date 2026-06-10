@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  resources :follows, only: %i[index create destroy]
+  resources :videos, only: :index
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#auth_failure', as: 'auth_failure'
