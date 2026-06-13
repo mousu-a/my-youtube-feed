@@ -1,2 +1,4 @@
 h1 Videos#index
-p Find me in app/views/videos/index.html.slim
+
+- if @videos.empty?
+  = link_to 'チャンネルをフォローする', follows_path
