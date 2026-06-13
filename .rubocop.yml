@@ -29,6 +29,9 @@ RSpec/SpecFilePathFormat:
 RSpec/ExampleLength:
   Max: 10
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Metrics/MethodLength:
   Max: 15
 
