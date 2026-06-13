@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = OmniAuthUserResolver.find_or_create_user(auth)
     if user.persisted?
       login(user)
-      redirect_to root_path, notice: t('.login_success')
+      redirect_to videos_path, notice: t('.login_success')
     else
       redirect_to root_path, alert: t('.login_failure')
     end

@@ -10,6 +10,7 @@ RSpec.describe 'Sessions' do
       sign_in_with_google user
 
       expect(page).to have_text 'ログインしました'
+      expect(page).to have_current_path videos_path
     end
 
     scenario 'cancels logging in' do
@@ -29,6 +30,7 @@ RSpec.describe 'Sessions' do
     before { sign_in_with_google user }
 
     scenario 'logs out' do
+      visit root_path
       click_on 'ログアウト'
 
       expect(page).to have_text 'ログアウトしました'

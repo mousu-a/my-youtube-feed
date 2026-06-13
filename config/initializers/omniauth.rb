@@ -2,9 +2,16 @@
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_oauth2,
-           ENV.fetch('GOOGLE_CLIENT_ID', nil),
-           ENV.fetch('GOOGLE_CLIENT_SECRET', nil),
-           scope: 'email,profile',
-           prompt: 'consent'
+    ENV.fetch('GOOGLE_CLIENT_ID', nil),
+    ENV.fetch('GOOGLE_CLIENT_SECRET', nil),
+    scope: 'email,profile'
+    # TODO 開発が終わったら戻す
+    #  prompt: 'consent'
+  provider :google_oauth2, ENV['GOOGLE_YOUTUBE_CLIENT_ID'], ENV['GOOGLE_YOUTUBE_CLIENT_SECRET'], {
+    name: 'google_youtube',
+    scope: 'email,profile,youtube.readonly',
+    # prompt: 'consent',
+    include_granted_scopes: 'true'
+  }
   on_failure { |env| OmniAuth::FailureEndpoint.new(env).redirect_to_failure }
 end

@@ -9,3 +9,6 @@ ja:
       logout_success: ログアウトしました。
     auth_failure:
       auth_failure: Googleログインがキャンセルされました。
+  follows:
+    create:
+      follow_limit_reached: フォロー上限に達しています。

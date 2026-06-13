@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :follows, only: %i[index create destroy]
   resources :videos, only: :index
 
+  get 'auth/google_youtube/callback', to: 'youtube_subscriptions#create'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#auth_failure', as: 'auth_failure'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
