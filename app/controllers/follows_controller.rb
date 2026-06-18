@@ -6,8 +6,8 @@ class FollowsController < ApplicationController
   def index
     @subscriptions = current_user.youtube_subscriptions.includes(:channel)
     @follows = current_user.follows.includes(:channel)
-    @followed_channel_ids = current_user.followed_channel_ids
-    @remaining_follow_count = FOLLOW_LIMIT - @follows.count
+    @followed_channel_ids = @follows.map(&:channel_id)
+    @remaining_follow_count = FOLLOW_LIMIT - @follows.size
     @follow_limit = FOLLOW_LIMIT
   end
 
