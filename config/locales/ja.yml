@@ -2,6 +2,7 @@ ja:
   users:
     guest: ゲスト
   sessions:
+    required_login: ログインが必要です。
     create:
       login_success: ログインしました。
       login_failure: 認証に失敗しました。もう一度お試しください。

@@ -3,6 +3,8 @@
 class FollowsController < ApplicationController
   FOLLOW_LIMIT = 15
 
+  before_action :require_login
+
   def index
     @subscriptions = current_user.youtube_subscriptions.includes(:channel)
     @follows = current_user.follows.includes(:channel)
