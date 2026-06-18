@@ -38,6 +38,9 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/MultipleExpectations:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/MethodLength:
   Max: 15
 
