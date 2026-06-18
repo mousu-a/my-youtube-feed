@@ -14,10 +14,13 @@ class FollowsController < ApplicationController
   end
 
   def create
-    return redirect_to follows_path, alert: t('.follow_limit_reached') if current_user.follows.count >= FOLLOW_LIMIT
-
     channel = Channel.find(channel_params)
-    current_user.follows.create(channel:)
+
+    current_user.with_lock do
+      return redirect_to follows_path, alert: t('.follow_limit_reached') if current_user.follows.count >= FOLLOW_LIMIT
+
+      current_user.follows.create!(channel:)
+    end
     redirect_to follows_path
   end
 
