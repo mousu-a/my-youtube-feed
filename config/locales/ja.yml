@@ -13,3 +13,6 @@ ja:
   follows:
     create:
       follow_limit_reached: フォロー上限に達しています。
+  youtube_subscriptions:
+    create:
+      sync_failed: YouTubeの登録チャンネルの取得に失敗しました。時間をおいてもう一度お試しください。
