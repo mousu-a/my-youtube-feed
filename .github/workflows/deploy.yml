@@ -50,6 +50,10 @@ jobs:
           echo "AWS_ECR_PASSWORD=$AWS_ECR_PASSWORD" > .kamal/secrets
           echo "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}" >> .kamal/secrets
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .kamal/secrets
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .kamal/secrets
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .kamal/secrets
+          echo "GOOGLE_YOUTUBE_CLIENT_ID=${{ secrets.GOOGLE_YOUTUBE_CLIENT_ID }}" >> .kamal/secrets
+          echo "GOOGLE_YOUTUBE_CLIENT_SECRET=${{ secrets.GOOGLE_YOUTUBE_CLIENT_SECRET }}" >> .kamal/secrets
 
       - name: Deploy with Kamal
         run: bin/kamal deploy
