@@ -22,6 +22,9 @@ gem 'jbuilder'
 gem 'slim-rails', '~> 4.0'
 
 gem 'google-apis-youtube_v3', '~> 0.65.0'
+# youtubeAPIGemの依存関係のため必要
+gem 'multi_json'
+
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
