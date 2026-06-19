@@ -2,6 +2,7 @@ ja:
   users:
     guest: ゲスト
   sessions:
+    required_login: ログインが必要です。
     create:
       login_success: ログインしました。
       login_failure: 認証に失敗しました。もう一度お試しください。
@@ -9,3 +10,9 @@ ja:
       logout_success: ログアウトしました。
     auth_failure:
       auth_failure: Googleログインがキャンセルされました。
+  follows:
+    create:
+      follow_limit_reached: フォロー上限に達しています。
+  youtube_subscriptions:
+    create:
+      sync_failed: YouTubeの登録チャンネルの取得に失敗しました。時間をおいてもう一度お試しください。

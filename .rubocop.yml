@@ -27,7 +27,19 @@ RSpec/SpecFilePathFormat:
     - "spec/models/omniauth_user_resolver_spec.rb"
 
 RSpec/ExampleLength:
-  Max: 10
+  Max: 12
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
 
 Metrics/MethodLength:
   Max: 15

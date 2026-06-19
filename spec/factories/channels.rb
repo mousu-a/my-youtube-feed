@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :channel do
-    youtube_channel_id { 'MyString' }
+    sequence(:youtube_channel_id) { |n| "UC#{n}" }
     name { 'MyString' }
     url { 'MyString' }
     icon_url { 'MyString' }

@@ -1,0 +1,35 @@
+h2 フォロー一覧
+
+section.explanation
+  p チェックしたいチャンネルを15チャンネルまでフォローできます。
+  p まずは下のボタンを押して、YouTubeで登録しているチャンネルを同期してください。（Googleの認証ページに飛びます）
+  = button_to 'YouTubeの登録チャンネルを取得する', '/auth/google_youtube',
+    method: :post, data: { turbo: false }
+
+- if @subscriptions.present?
+  section.explanation
+    p
+      | あと#{@remaining_follow_count}人フォローできます。
+      | （現在、フォロー出来るのは#{@follow_limit}人までとなっております🙇️）
+
+  section.follows
+    p フォローチャンネル一覧
+    - @follows.each do |follow|
+      - channel = follow.channel
+      .channel-card
+        = image_tag channel.icon_url, alt: channel.name, width: 48, height: 48
+        = link_to channel.name, channel.url, target: '_blank', rel: 'noopener'
+        = button_to 'フォローを外す', follow_path(follow), method: :delete
+
+  section.subscriptions
+    p サブスクチャンネル一覧
+    - @subscriptions.each do |subscription|
+      - channel = subscription.channel
+      .channel-card
+        = image_tag channel.icon_url, alt: channel.name, width: 48, height: 48
+        = link_to channel.name, channel.url, target: '_blank', rel: 'noopener'
+        - if @followed_channel_ids.include?(channel.id)
+          p フォロー済み
+        - else
+          = button_to 'フォロー', follows_path,
+            method: :post, params: { channel_id: channel.id }

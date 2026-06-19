@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def require_login
+    return if current_user
+
+    redirect_to root_path, alert: t('sessions.required_login')
+  end
+
   def current_user
     return @current_user if defined?(@current_user)
 
