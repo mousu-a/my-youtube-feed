@@ -57,6 +57,10 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: postgres://rails:password@localhost:5432/my_youtube_feed_test
+      GOOGLE_CLIENT_ID: test-google-client-id
+      GOOGLE_CLIENT_SECRET: test-google-client-secret
+      GOOGLE_YOUTUBE_CLIENT_ID: test-google-youtube-client-id
+      GOOGLE_YOUTUBE_CLIENT_SECRET: test-google-youtube-client-secret
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
