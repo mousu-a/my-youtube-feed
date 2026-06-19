@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+return if ENV['SECRET_KEY_BASE_DUMMY'] == '1'
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :google_oauth2,
     ENV.fetch('GOOGLE_CLIENT_ID'),
