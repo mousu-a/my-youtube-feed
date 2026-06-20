@@ -65,7 +65,7 @@ group :development, :test do
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rails', '~> 2.35', require: false
-  gem 'rubocop-rspec', '~> 3.9', require: false
+  gem 'rubocop-rspec', '~> 3.10', require: false
   gem 'rubocop-rspec_rails', '~> 2.32', require: false
   gem 'slim_lint', '~> 0.34.0', require: false
 
