@@ -1,0 +1,13 @@
+.video-card
+  = link_to youtube_video_url(video), target: '_blank', rel: 'noopener', class: 'video-thumbnail-link' do
+    = image_tag video.thumbnail_url, alt: video.title, class: 'video-thumbnail'
+
+  .video-info
+    = link_to video.channel.url, target: '_blank', rel: 'noopener', class: 'channel-link' do
+      = image_tag video.channel.icon_url, alt: video.channel.name, class: 'channel-icon', width: 36, height: 36
+      span.channel-name = video.channel.name
+
+    h3.video-title
+      = link_to video.title, youtube_video_url(video), target: '_blank', rel: 'noopener'
+
+    p.video-meta = video_time_label(video)

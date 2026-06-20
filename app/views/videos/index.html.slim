@@ -1,4 +1,29 @@
-h1 Videos#index
+h1 動画一覧
 
-- if @videos.empty?
-  = link_to 'チャンネルをフォローする', follows_path
+- if @follows.empty?
+  section.no-follows
+    p チャンネルをフォローしましょう
+    = link_to 'フォロー画面へ', follows_path
+- else
+  - if @live_streams.any?
+    section.live
+      h2 ライブ配信中
+      - @live_streams.each do |video|
+        = render 'video_card', video: video
+
+  - if @upcoming_streams.any?
+    section.upcoming
+      h2 配信予定
+      - @upcoming_streams.each do |video|
+        = render 'video_card', video: video
+
+  - if @archives.any?
+    section.archives
+      h2 アーカイブ
+      - @archives.each do |video|
+        = render 'video_card', video: video
+
+  - if @live_streams.empty? && @upcoming_streams.empty? && @archives.empty?
+    section.empty-state
+      p.empty-icon 📭
+      p 動画がありません

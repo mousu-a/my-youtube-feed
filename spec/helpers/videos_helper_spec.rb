@@ -1,15 +1,21 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the VideosHelper. For example:
-#
-# describe VideosHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe VideosHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#video_time_label' do
+    it 'returns elapsed time with 前 suffix' do
+      video = build(:video, published_at: 2.hours.ago)
+
+      expect(helper.video_time_label(video)).to include('前')
+    end
+  end
+
+  describe '#youtube_video_url' do
+    it 'returns YouTube watch URL' do
+      video = build(:video, youtube_video_id: 'abc123')
+
+      expect(helper.youtube_video_url(video)).to eq('https://www.youtube.com/watch?v=abc123')
+    end
+  end
 end
