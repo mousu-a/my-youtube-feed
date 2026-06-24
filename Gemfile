@@ -61,7 +61,7 @@ group :development, :test do
 
   # Static analysis for Ruby, RSpec, Capybara, and Rails code.
   gem 'rubocop', '~> 1.86', require: false
-  gem 'rubocop-capybara', '~> 2.23', require: false
+  gem 'rubocop-capybara', '~> 3.0', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', '~> 1.26', require: false
   gem 'rubocop-rails', '~> 2.35', require: false
