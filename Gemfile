@@ -21,7 +21,7 @@ gem 'jbuilder'
 # Slim template engine integration for Rails [https://github.com/slim-template/slim-rails]
 gem 'slim-rails', '~> 4.0'
 
-gem 'google-apis-youtube_v3', '~> 0.65.0'
+gem 'google-apis-youtube_v3', '~> 0.66.0'
 # youtubeAPIGemの依存関係のため必要
 gem 'multi_json'
 
